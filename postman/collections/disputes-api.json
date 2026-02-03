@@ -1,0 +1,1520 @@
+{
+  "info": {
+    "_postman_id": "30798428-2373-434a-9a07-42d96b391714",
+    "name": "Dispute API",
+    "description": "# Dispute Management API\n\n## Overview\nA comprehensive API for managing Dispute operations, including:\n- Invoice generation\n- Payment processing\n- Subscription management\n- Dispute history\n- Payment method management\n\n## Authentication\nAll endpoints require Bearer Token authentication.\n\n## Error Handling\nThe API uses standard HTTP status codes and provides detailed error responses.\n\n## Contact Information\n- **Support Email**: Dispute-support@example.com\n- **Support Phone**: +1-800-Dispute\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-02-03T18:00:06.000Z",
+    "updatedAt": "2026-02-03T18:00:07.000Z",
+    "lastUpdatedBy": "49447140",
+    "uid": "49447140-30798428-2373-434a-9a07-42d96b391714"
+  },
+  "item": [
+    {
+      "name": "invoices",
+      "item": [
+        {
+          "name": "{invoiceId}",
+          "item": [
+            {
+              "name": "Get Invoice Details",
+              "id": "0b56c9fd-f6c5-4767-9bff-9f65bc07bc02",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices/:invoiceId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "cb08df49-1f23-4991-acc7-764ee6c78f4f",
+                      "key": "invoiceId",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier of the invoice"
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific invoice"
+              },
+              "response": [
+                {
+                  "id": "c8d723b5-46f2-4369-9f81-401285a7f3fd",
+                  "name": "Successfully retrieved invoice details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:invoiceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":invoiceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "invoiceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"status\": \"cancelled\",\n  \"issueDate\": \"<dateTime>\",\n  \"dueDate\": \"<dateTime>\",\n  \"lineItems\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"unitPrice\": \"<float>\",\n      \"total\": \"<float>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"unitPrice\": \"<float>\",\n      \"total\": \"<float>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-02-03T18:00:07.000Z",
+                  "updatedAt": "2026-02-03T18:00:07.000Z",
+                  "uid": "49447140-c8d723b5-46f2-4369-9f81-401285a7f3fd"
+                },
+                {
+                  "id": "d3b3d5bd-5f5a-4bda-b7ce-43b59c276903",
+                  "name": "Unauthorized - Invalid or missing authentication",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:invoiceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":invoiceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "invoiceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-02-03T18:00:07.000Z",
+                  "updatedAt": "2026-02-03T18:00:07.000Z",
+                  "uid": "49447140-d3b3d5bd-5f5a-4bda-b7ce-43b59c276903"
+                },
+                {
+                  "id": "4b060287-f71b-4211-8239-a706289009dd",
+                  "name": "Not Found - The requested resource does not exist",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:invoiceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":invoiceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "invoiceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-02-03T18:00:07.000Z",
+                  "updatedAt": "2026-02-03T18:00:07.000Z",
+                  "uid": "49447140-4b060287-f71b-4211-8239-a706289009dd"
+                }
+              ],
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-0b56c9fd-f6c5-4767-9bff-9f65bc07bc02"
+            }
+          ],
+          "id": "e557ea83-178f-4cb3-8308-f28056f0e9f4",
+          "createdAt": "2026-02-03T18:00:07.000Z",
+          "updatedAt": "2026-02-03T18:00:07.000Z",
+          "uid": "49447140-e557ea83-178f-4cb3-8308-f28056f0e9f4"
+        },
+        {
+          "name": "List Invoices",
+          "id": "57683177-def5-4c62-a580-09fd386e18ef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/invoices?status=overdue&page=1&limit=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": [
+                {
+                  "description": "Filter invoices by status",
+                  "key": "status",
+                  "value": "overdue"
+                },
+                {
+                  "description": "Page number for pagination",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "Number of invoices per page",
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Retrieve a list of invoices for the authenticated user"
+          },
+          "response": [
+            {
+              "id": "47835cb6-f70e-4ce0-b9f3-7b0b350feed6",
+              "name": "Successfully retrieved invoices",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?status=overdue&page=1&limit=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter invoices by status",
+                      "key": "status",
+                      "value": "overdue"
+                    },
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of invoices per page",
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"invoices\": [\n    {\n      \"id\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"amount\": \"<float>\",\n      \"status\": \"cancelled\",\n      \"issueDate\": \"<dateTime>\",\n      \"dueDate\": \"<dateTime>\",\n      \"lineItems\": [\n        {\n          \"description\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"unitPrice\": \"<float>\",\n          \"total\": \"<float>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"unitPrice\": \"<float>\",\n          \"total\": \"<float>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"amount\": \"<float>\",\n      \"status\": \"overdue\",\n      \"issueDate\": \"<dateTime>\",\n      \"dueDate\": \"<dateTime>\",\n      \"lineItems\": [\n        {\n          \"description\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"unitPrice\": \"<float>\",\n          \"total\": \"<float>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"unitPrice\": \"<float>\",\n          \"total\": \"<float>\"\n        }\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"total\": \"<integer>\",\n    \"page\": \"<integer>\",\n    \"limit\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-47835cb6-f70e-4ce0-b9f3-7b0b350feed6"
+            },
+            {
+              "id": "822d4c95-736b-4508-b59d-b9e17bb624bb",
+              "name": "Unauthorized - Invalid or missing authentication",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?status=overdue&page=1&limit=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter invoices by status",
+                      "key": "status",
+                      "value": "overdue"
+                    },
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of invoices per page",
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-822d4c95-736b-4508-b59d-b9e17bb624bb"
+            }
+          ],
+          "createdAt": "2026-02-03T18:00:07.000Z",
+          "updatedAt": "2026-02-03T18:00:07.000Z",
+          "uid": "49447140-57683177-def5-4c62-a580-09fd386e18ef"
+        },
+        {
+          "name": "Create Invoice",
+          "id": "5e0db5f8-72d5-4235-9539-d6a951475ed6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"unitPrice\": \"<float>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"unitPrice\": \"<float>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/invoices",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "invoices"
+              ]
+            },
+            "description": "Generate a new invoice for a customer"
+          },
+          "response": [
+            {
+              "id": "616a2964-55fb-4255-b492-2ca8407b6964",
+              "name": "Invoice created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"unitPrice\": \"<float>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"unitPrice\": \"<float>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"customerId\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"status\": \"cancelled\",\n  \"issueDate\": \"<dateTime>\",\n  \"dueDate\": \"<dateTime>\",\n  \"lineItems\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"unitPrice\": \"<float>\",\n      \"total\": \"<float>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"unitPrice\": \"<float>\",\n      \"total\": \"<float>\"\n    }\n  ]\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-616a2964-55fb-4255-b492-2ca8407b6964"
+            },
+            {
+              "id": "bade2faa-1ea4-4742-b23b-9418006825aa",
+              "name": "Bad Request - Invalid input",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"unitPrice\": \"<float>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"unitPrice\": \"<float>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-bade2faa-1ea4-4742-b23b-9418006825aa"
+            },
+            {
+              "id": "73f85194-9803-4ca4-acab-c92a9e5afe2c",
+              "name": "Unauthorized - Invalid or missing authentication",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"<string>\",\n  \"lineItems\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"unitPrice\": \"<float>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"unitPrice\": \"<float>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/invoices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-73f85194-9803-4ca4-acab-c92a9e5afe2c"
+            }
+          ],
+          "createdAt": "2026-02-03T18:00:07.000Z",
+          "updatedAt": "2026-02-03T18:00:07.000Z",
+          "uid": "49447140-5e0db5f8-72d5-4235-9539-d6a951475ed6"
+        }
+      ],
+      "id": "431386be-0d5b-4e06-9e18-b20b0adab842",
+      "createdAt": "2026-02-03T18:00:07.000Z",
+      "updatedAt": "2026-02-03T18:00:07.000Z",
+      "uid": "49447140-431386be-0d5b-4e06-9e18-b20b0adab842"
+    },
+    {
+      "name": "payments",
+      "item": [
+        {
+          "name": "List Payment Transactions",
+          "id": "fb09cebc-8fec-4f39-be66-916168b4e9d4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments?status=pending&page=1&limit=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": [
+                {
+                  "description": "Filter transactions by status",
+                  "key": "status",
+                  "value": "pending"
+                },
+                {
+                  "description": "Page number for pagination",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "Number of transactions per page",
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Retrieve a list of payment transactions"
+          },
+          "response": [
+            {
+              "id": "ef24710d-d7b3-4b52-afec-9a79d76b6a01",
+              "name": "Successfully retrieved payment transactions",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments?status=pending&page=1&limit=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter transactions by status",
+                      "key": "status",
+                      "value": "pending"
+                    },
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of transactions per page",
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"transactions\": [\n    {\n      \"id\": \"<string>\",\n      \"invoiceId\": \"<string>\",\n      \"amount\": \"<float>\",\n      \"status\": \"pending\",\n      \"timestamp\": \"<dateTime>\",\n      \"paymentMethod\": {\n        \"id\": \"<string>\",\n        \"type\": \"paypal\",\n        \"lastFourDigits\": \"<string>\",\n        \"expiryDate\": \"<date>\",\n        \"isDefault\": \"<boolean>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"invoiceId\": \"<string>\",\n      \"amount\": \"<float>\",\n      \"status\": \"pending\",\n      \"timestamp\": \"<dateTime>\",\n      \"paymentMethod\": {\n        \"id\": \"<string>\",\n        \"type\": \"debit_card\",\n        \"lastFourDigits\": \"<string>\",\n        \"expiryDate\": \"<date>\",\n        \"isDefault\": \"<boolean>\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"total\": \"<integer>\",\n    \"page\": \"<integer>\",\n    \"limit\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-ef24710d-d7b3-4b52-afec-9a79d76b6a01"
+            },
+            {
+              "id": "cff86a13-be7e-4e91-905f-e03e65d05b08",
+              "name": "Unauthorized - Invalid or missing authentication",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments?status=pending&page=1&limit=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter transactions by status",
+                      "key": "status",
+                      "value": "pending"
+                    },
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of transactions per page",
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-cff86a13-be7e-4e91-905f-e03e65d05b08"
+            }
+          ],
+          "createdAt": "2026-02-03T18:00:07.000Z",
+          "updatedAt": "2026-02-03T18:00:07.000Z",
+          "uid": "49447140-fb09cebc-8fec-4f39-be66-916168b4e9d4"
+        },
+        {
+          "name": "Process Payment",
+          "id": "337b85d6-6b73-4261-8702-825f5de65dbb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"invoiceId\": \"<string>\",\n  \"paymentMethodId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments"
+              ]
+            },
+            "description": "Process a payment for a specific invoice"
+          },
+          "response": [
+            {
+              "id": "362e7dae-3df8-4fa2-afe6-e0c19fdc5846",
+              "name": "Payment processed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceId\": \"<string>\",\n  \"paymentMethodId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"invoiceId\": \"<string>\",\n  \"amount\": \"<float>\",\n  \"status\": \"pending\",\n  \"timestamp\": \"<dateTime>\",\n  \"paymentMethod\": {\n    \"id\": \"<string>\",\n    \"type\": \"debit_card\",\n    \"lastFourDigits\": \"<string>\",\n    \"expiryDate\": \"<date>\",\n    \"isDefault\": \"<boolean>\"\n  }\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-362e7dae-3df8-4fa2-afe6-e0c19fdc5846"
+            },
+            {
+              "id": "787323ad-0fc5-4f9d-8c22-93560408a655",
+              "name": "Bad Request - Invalid input",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceId\": \"<string>\",\n  \"paymentMethodId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-787323ad-0fc5-4f9d-8c22-93560408a655"
+            },
+            {
+              "id": "a29903af-04b8-47a5-bdc4-b0ab6b07be75",
+              "name": "Unauthorized - Invalid or missing authentication",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invoiceId\": \"<string>\",\n  \"paymentMethodId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-a29903af-04b8-47a5-bdc4-b0ab6b07be75"
+            }
+          ],
+          "createdAt": "2026-02-03T18:00:07.000Z",
+          "updatedAt": "2026-02-03T18:00:07.000Z",
+          "uid": "49447140-337b85d6-6b73-4261-8702-825f5de65dbb"
+        }
+      ],
+      "id": "6715181e-94dc-4caf-88f2-c0834d4cb038",
+      "createdAt": "2026-02-03T18:00:07.000Z",
+      "updatedAt": "2026-02-03T18:00:07.000Z",
+      "uid": "49447140-6715181e-94dc-4caf-88f2-c0834d4cb038"
+    },
+    {
+      "name": "payment-methods",
+      "item": [
+        {
+          "name": "{paymentMethodId}",
+          "item": [
+            {
+              "name": "Remove Payment Method",
+              "id": "9d76964e-75bb-4046-a2f8-e4427b089162",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-methods/:paymentMethodId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-methods",
+                    ":paymentMethodId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "8c60a3eb-c9cc-4212-af3d-5e7b7701b628",
+                      "key": "paymentMethodId",
+                      "value": "<string>",
+                      "description": "(Required) Unique identifier of the payment method"
+                    }
+                  ]
+                },
+                "description": "Remove a specific payment method"
+              },
+              "response": [
+                {
+                  "id": "8f912fff-a890-4c37-95d2-327331af0cd6",
+                  "name": "Payment method removed successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-methods/:paymentMethodId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-methods",
+                        ":paymentMethodId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "paymentMethodId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-02-03T18:00:07.000Z",
+                  "updatedAt": "2026-02-03T18:00:07.000Z",
+                  "uid": "49447140-8f912fff-a890-4c37-95d2-327331af0cd6"
+                },
+                {
+                  "id": "5c8b6681-15a0-4870-8a13-a1b9bdf1b813",
+                  "name": "Unauthorized - Invalid or missing authentication",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-methods/:paymentMethodId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-methods",
+                        ":paymentMethodId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "paymentMethodId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-02-03T18:00:07.000Z",
+                  "updatedAt": "2026-02-03T18:00:07.000Z",
+                  "uid": "49447140-5c8b6681-15a0-4870-8a13-a1b9bdf1b813"
+                },
+                {
+                  "id": "2dc96fe0-66b2-48d9-bfef-60e537a2f76c",
+                  "name": "Not Found - The requested resource does not exist",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment-methods/:paymentMethodId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment-methods",
+                        ":paymentMethodId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "paymentMethodId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-02-03T18:00:07.000Z",
+                  "updatedAt": "2026-02-03T18:00:07.000Z",
+                  "uid": "49447140-2dc96fe0-66b2-48d9-bfef-60e537a2f76c"
+                }
+              ],
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-9d76964e-75bb-4046-a2f8-e4427b089162"
+            }
+          ],
+          "id": "7c9155cb-8221-45ee-b12f-59044f864718",
+          "createdAt": "2026-02-03T18:00:07.000Z",
+          "updatedAt": "2026-02-03T18:00:07.000Z",
+          "uid": "49447140-7c9155cb-8221-45ee-b12f-59044f864718"
+        },
+        {
+          "name": "List Payment Methods",
+          "id": "c406bb87-9743-42b3-b50f-ab05c9bdc944",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payment-methods",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payment-methods"
+              ]
+            },
+            "description": "Retrieve a list of saved payment methods"
+          },
+          "response": [
+            {
+              "id": "e287025a-ea03-403d-b3b4-c10437f24518",
+              "name": "Successfully retrieved payment methods",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-methods",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-methods"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"type\": \"paypal\",\n    \"lastFourDigits\": \"<string>\",\n    \"expiryDate\": \"<date>\",\n    \"isDefault\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"type\": \"paypal\",\n    \"lastFourDigits\": \"<string>\",\n    \"expiryDate\": \"<date>\",\n    \"isDefault\": \"<boolean>\"\n  }\n]",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-e287025a-ea03-403d-b3b4-c10437f24518"
+            },
+            {
+              "id": "d1aa1391-d3a5-4b82-8cb8-fd6978261075",
+              "name": "Unauthorized - Invalid or missing authentication",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payment-methods",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-methods"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-d1aa1391-d3a5-4b82-8cb8-fd6978261075"
+            }
+          ],
+          "createdAt": "2026-02-03T18:00:07.000Z",
+          "updatedAt": "2026-02-03T18:00:07.000Z",
+          "uid": "49447140-c406bb87-9743-42b3-b50f-ab05c9bdc944"
+        },
+        {
+          "name": "Add Payment Method",
+          "id": "f6d7ca3f-10fd-40d8-86a1-0cd33cd99724",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"credit_card\",\n  \"cardNumber\": \"<string>\",\n  \"expiryDate\": \"<date>\",\n  \"cvv\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payment-methods",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payment-methods"
+              ]
+            },
+            "description": "Add a new payment method for the user"
+          },
+          "response": [
+            {
+              "id": "c2c4eaf2-0742-44df-82f4-6a4e871b47f8",
+              "name": "Payment method added successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"credit_card\",\n  \"cardNumber\": \"<string>\",\n  \"expiryDate\": \"<date>\",\n  \"cvv\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payment-methods",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-methods"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"debit_card\",\n  \"lastFourDigits\": \"<string>\",\n  \"expiryDate\": \"<date>\",\n  \"isDefault\": \"<boolean>\"\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-c2c4eaf2-0742-44df-82f4-6a4e871b47f8"
+            },
+            {
+              "id": "99e19b6e-4116-40a1-b28a-47a9399e6ac5",
+              "name": "Bad Request - Invalid input",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"credit_card\",\n  \"cardNumber\": \"<string>\",\n  \"expiryDate\": \"<date>\",\n  \"cvv\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payment-methods",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-methods"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-99e19b6e-4116-40a1-b28a-47a9399e6ac5"
+            },
+            {
+              "id": "5902f3ec-9c22-4980-9521-3abf63f39670",
+              "name": "Unauthorized - Invalid or missing authentication",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"credit_card\",\n  \"cardNumber\": \"<string>\",\n  \"expiryDate\": \"<date>\",\n  \"cvv\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payment-methods",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payment-methods"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-02-03T18:00:07.000Z",
+              "updatedAt": "2026-02-03T18:00:07.000Z",
+              "uid": "49447140-5902f3ec-9c22-4980-9521-3abf63f39670"
+            }
+          ],
+          "createdAt": "2026-02-03T18:00:07.000Z",
+          "updatedAt": "2026-02-03T18:00:07.000Z",
+          "uid": "49447140-f6d7ca3f-10fd-40d8-86a1-0cd33cd99724"
+        }
+      ],
+      "id": "7e940adb-0cf8-40b8-b8f8-9080b8d0a4d8",
+      "createdAt": "2026-02-03T18:00:07.000Z",
+      "updatedAt": "2026-02-03T18:00:07.000Z",
+      "uid": "49447140-7e940adb-0cf8-40b8-b8f8-9080b8d0a4d8"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.example.com/v1/Dispute"
+    }
+  ]
+}

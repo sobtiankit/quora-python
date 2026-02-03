@@ -1,0 +1,22 @@
+{
+  "workspace": {
+    "id": "7e57f90d-49ff-4610-8175-d731d74f819a"
+  },
+  "entities": {
+    "collections": [
+      "../postman/collections/disputes-api.json"
+    ],
+    "environments": [
+      "../environments/disputes-api---development.json",
+      "../environments/disputes-api---staging.json",
+      "../environments/disputes-api---production.json"
+    ],
+    "specs": [
+      "../postman/specs/disputes-api.yaml"
+    ],
+    "flows": [],
+    "globals": [
+      "../postman/globals/workspace.postman_globals.json"
+    ]
+  }
+}
